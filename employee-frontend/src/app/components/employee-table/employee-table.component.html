@@ -1,0 +1,18 @@
+<div *ngIf="loading">Loading...</div>
+
+<table *ngIf="!loading">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Total Hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employeeData" [ngClass]="{ 'low-hours': emp.totalHours < 100 }">
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.totalHours | number: '1.2-2' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<app-employee-pie-chart [employeeData]="employeeData"></app-employee-pie-chart>
